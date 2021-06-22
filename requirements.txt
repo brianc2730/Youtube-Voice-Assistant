@@ -1,4 +1,12 @@
+appdirs==1.4.4
+black==21.6b0
+click==8.0.1
+colorama==0.4.4
+mypy-extensions==0.4.3
+pathspec==0.8.1
 PyAudio @ file:///C:/Users/brian/VSCodeProjects/computer_science_portfolio/youtube_voice_assistant/PyAudio-0.2.11-cp38-cp38-win32.whl
+regex==2021.4.4
 selenium==3.141.0
 SpeechRecognition==3.8.1
+toml==0.10.2
 urllib3==1.26.5
