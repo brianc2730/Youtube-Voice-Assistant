@@ -4,6 +4,11 @@
 # Pull up Youtube accordingly
 
 import speech_recognition
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 youtube_recognizer = speech_recognition.Recognizer()
 
@@ -27,3 +32,30 @@ with speech_recognition.Microphone() as user_voice:
             break
         except:
             print("Couldn't detect your voice. Try again")
+
+PATH = "C:\Program Files (x86)\chromedriver.exe"
+chrome_driver = webdriver.Chrome(PATH)
+chrome_driver.get("https://youtube.com")
+
+search_bar = chrome_driver.find_element_by_id("search")
+search_bar.send_keys(channel_name)
+search_button = chrome_driver.find_element_by_id("search-icon-legacy")
+search_button.click()
+
+try:
+    channel_page = WebDriverWait(chrome_driver, 10).until(
+        EC.presence_of_element_located((By.ID, "main-link"))
+    )
+    channel_page.click()
+except:
+    chrome_driver.quit()
+    print("Sorry! Can't find channel name. Try again")
+
+if page_name.lower() == "first video":
+    pass
+
+if page_name.lower() == "most recent video":
+    pass
+
+if page_name.lower() == "most popular video":
+    pass
